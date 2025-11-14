@@ -1,0 +1,127 @@
+:root {
+    --theme: #9965AD;
+}
+
+/* ------------------ POSTS AND WRAPPER ------------------ */
+
+/** Posts bg color **/
+div .entrywrap, div .entrywrap-hover {
+    background-color: #E1F1F4;
+    box-shadow: 5px 5px #BDD9DB;
+    border: none; 
+}
+
+/* ------------------ HEADER STUFF ------------------ */
+
+#header {
+    height: 77vh;
+    background-color: #FFFFFF;
+    background-image: url("https://i.pinimg.com/originals/b1/4a/57/b14a5718ea36841b69306929096cb2c0.jpg");
+    background-position: center;
+    background-size: cover; 
+    background-attachment: fixed;
+    border: none;
+    overflow-x: hidden; 
+    position: relative; 
+}
+
+#header h1 {
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+    left: 0; 
+    right: 0;
+    text-align: center;
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 65px;
+    height: 150px;
+    overflow: hidden;
+    transition: 0.45s;
+}
+
+#header h1:hover {
+    text-decoration: none;
+    font-size: 70px;
+    bottom: 10px;
+}
+
+div#wrapper {
+    width: 100%;
+}
+
+/* ------------------ MAIN CONTENT ------------------ */
+
+div#main {
+    width: 57%;
+    margin-left: 150px;
+}
+
+
+/* ------------------ CUSTOM CURSOR ------------------ */
+
+
+html {
+    cursor: auto; 
+}
+a {
+    cursor: url(https://cdn.custom-cursor.com/db/pointer/32/Custom_Cursor_Logo_Pointer.png) 4 12, pointer; /* ADDED: Fallback keyword 'pointer' */
+}
+div:hover {
+    cursor: url(https://cdn.custom-cursor.com/db/cursor/32/Custom_Cursor_Logo_Cursor.png) 4 12, default; /* ADDED: Fallback keyword 'default' */
+}
+
+/* ------------------ SCROLL BAR ------------------ */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    background: #C7A1BF;
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #C7A1BF;
+}
+
+/* ------------------ STUFF ON THE RIGHT ------------------ */
+
+#side {
+    background-color: #FFFFFF;
+    border: none;
+    outline: none; 
+}
+
+.blog-shout.row1 {
+    background-color: #FFFFFF;
+    color: #000000; 
+    outline: 9px solid #FFFFFF; 
+}
+
+.blog-shout.row2 {
+    background-color: #FCF5FA;
+    color: #000000; 
+}
+
+/* ------------------ LINKS ------------------ */
+
+a:link {
+    color: #9965AD;
+    text-decoration: none;
+}
+a:visited {
+    color: #4F4287;
+    text-decoration: none
+}
+a:hover {
+    color: #8520AB;
+}
+a:active {
+    color: darkblue;
+}
+
+/* ------------------ MISC ------------------ */
+
+.cmty-post-edited .cmty-post-edit-info {
+    display: none;
+}
