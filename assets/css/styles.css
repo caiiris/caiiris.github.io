@@ -5,3 +5,65 @@ body {
     scroll-behavior: smooth;
     overflow-x: hidden; 
 }
+
+.header-container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 30px;
+    background-color: #FFFFFF; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+main {
+    padding: 20px 30px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #4B0082; /* Deep purple color for the site title */
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.nav-button {
+    text-decoration: none;
+
+    background-color: #8A2BE2; 
+    color: white; 
+    padding: 8px 16px;
+    margin-left: 10px; 
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: inline-block;
+    font-weight: 600;
+    border: 2px solid #8A2BE2; 
+}
+
+.nav-button:hover {
+    background-color: #6A1AAB; 
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:active {
+    background-color: #4B0082; 
+    transform: translateY(1px); 
+    box-shadow: none;
+}
+
+a:link,
+a:visited {
+    color: #4B0082; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+}
+
+a:hover:not(.nav-button) { 
+    color: #8A2BE2; 
+    text-decoration: underline; 
+}
