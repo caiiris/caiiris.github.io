@@ -11,7 +11,7 @@ body {
     justify-content: space-between; 
     align-items: center; 
     padding: 15px 30px;
-    background-color: #FFFFFF; 
+    background-color: #eddce9; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
@@ -32,7 +32,7 @@ h2 {
 .nav-button {
     text-decoration: none;
 
-    background-color: #8A2BE2; 
+    background-color: #b37de5; 
     color: white; 
     padding: 8px 16px;
     margin-left: 10px; 
@@ -40,18 +40,18 @@ h2 {
     transition: background-color 0.2s ease, transform 0.1s ease;
     display: inline-block;
     font-weight: 600;
-    border: 2px solid #8A2BE2; 
+    border: 2px solid #834ab9; 
 }
 
 .nav-button:hover {
-    background-color: #6A1AAB; 
+    background-color: #8e4bc5; 
     text-decoration: none;
     transform: translateY(-1px);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .nav-button:active {
-    background-color: #4B0082; 
+    background-color: #8647b3; 
     transform: translateY(1px); 
     box-shadow: none;
 }
@@ -64,6 +64,6 @@ a:visited {
 }
 
 a:hover:not(.nav-button) { 
-    color: #8A2BE2; 
+    color: #8f4ecd; 
     text-decoration: underline; 
 }
