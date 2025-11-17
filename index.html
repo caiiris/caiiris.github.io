@@ -19,7 +19,7 @@
     
     <div class="container">
         <div class="content-section">
-            <h2>Welcome!</h2>
+            <h2>Welcome! 🍂</h2>
             
             <div class="flower-row">
                 <div class="flower-card">
@@ -49,34 +49,34 @@
 
         <!-- Photo Gallery Section -->
         <div class="content-section">
-            <h2>some cool pics</h2>
+            <h2>some cool pics 📷</h2>
             
             <div class="photo-gallery">
                 <div class="gallery-container">
                     <div class="gallery-slides">
                         <div class="gallery-slide active">
-                            <img src="assets/IMG_2474 (1).png">
+                            <img src="assets/IMG_2474.png" alt="Photo 1">
                         </div>
                         <div class="gallery-slide">
-                            <img src="assets/IMG_2477.png">
+                            <img src="assets/IMG_2477.png" alt="Photo 2">
                         </div>
                         <div class="gallery-slide">
-                            <img src="assets/IMG_4633.png">
+                            <img src="assets/IMG_4633.png" alt="Photo 3">
                         </div>
                         <div class="gallery-slide">
-                            <img src="assets/IMG_4776.png">
+                            <img src="assets/IMG_4776.png" alt="Photo 4">
                         </div>
                         <div class="gallery-slide">
-                            <img src="assets/IMG_7195.png">
+                            <img src="assets/IMG_7195.png" alt="Photo 5">
                         </div>
                         <div class="gallery-slide">
-                            <img src="assets/IMG_7181.png">
+                            <img src="assets/IMG_7181.png" alt="Photo 6">
                         </div>
                         <div class="gallery-slide">
-                            <img src="assets/IMG_0517.png">
+                            <img src="assets/IMG_0517.png" alt="Photo 7">
                         </div>
                         <div class="gallery-slide">
-                            <img src="assets/IMG_0543.png">
+                            <img src="assets/IMG_0543.png" alt="Photo 8">
                         </div>
                     </div>
                     
@@ -94,7 +94,6 @@
                         <span class="gallery-dot" onclick="currentSlide(5)"></span>
                         <span class="gallery-dot" onclick="currentSlide(6)"></span>
                         <span class="gallery-dot" onclick="currentSlide(7)"></span>
-                        <span class="gallery-dot" onclick="currentSlide(8)"></span>
                     </div>
                 </div>
             </div>
@@ -103,6 +102,10 @@
         </div>
     </div>
 
+    <footer>
+        <p>Want to connect? Reach out at iriscai (dot) stanford (dot) edu!</p>
+    </footer>
+
     <script>
         let currentSlideIndex = 0;
         let autoSlideInterval;
@@ -110,7 +113,6 @@
         function showSlide(index) {
             const slides = document.querySelectorAll('.gallery-slide');
             const dots = document.querySelectorAll('.gallery-dot');
-            const captionElement = document.getElementById('gallery-caption');
             
             if (index >= slides.length) {
                 currentSlideIndex = 0;
@@ -125,13 +127,6 @@
             
             slides[currentSlideIndex].classList.add('active');
             dots[currentSlideIndex].classList.add('active');
-            
-            if (captions[currentSlideIndex]) {
-                captionElement.textContent = captions[currentSlideIndex];
-                captionElement.style.display = 'block';
-            } else {
-                captionElement.style.display = 'none';
-            }
         }
         
         function changeSlide(direction) {
@@ -167,10 +162,6 @@
             startAutoSlide();
         });
     </script>
-
-    <footer>
-        <p>Want to connect? Reach out at iriscai (dot) stanford (dot) edu!</p>
-    </footer>
 
 </body>
 </html>
