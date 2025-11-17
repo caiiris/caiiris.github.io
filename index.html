@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iris Cai</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     <header>
         <h1>Iris Cai</h1>
         <nav>
-            <a href="index.html">About</a>
+            <a href="index.html" class="active">About</a>
             <a href="experience.html">Experience</a>
             <a href="reading-recs.html">Reading Recs</a>
             <a href="blog.html">Blog</a>
@@ -18,9 +18,8 @@
     </header>
     
     <div class="container">
-        <!-- About Section -->
-        <div id="about" class="content-section">
-            <h2>Welcome! 🍂</h2>
+        <div class="content-section">
+            <h2>Welcome!</h2>
             
             <div class="flower-row">
                 <div class="flower-card">
@@ -45,7 +44,128 @@
             
             <p>Welcome home.</p>
             
-            <p>[text]</p>
+            <div class="wave-divider">〰️〰️〰️</div>
+        </div>
+
+        <!-- Photo Gallery Section -->
+        <div class="content-section">
+            <h2>some cool pics</h2>
+            
+            <div class="photo-gallery">
+                <div class="gallery-container">
+                    <div class="gallery-slides">
+                        <div class="gallery-slide active">
+                            <img src="assets/IMG_2474 (1).HEIC">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="assets/IMG_2477.HEIC">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="assets/IMG_4633.heic">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="assets/IMG_4776.HEIC">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="assets/IMG_7195.heic">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="assets/IMG_7181.HEIC">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="assets/IMG_0517.HEIC">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="assets/IMG_0543.HEIC">
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <div class="gallery-nav prev" onclick="changeSlide(-1)">‹</div>
+                    <div class="gallery-nav next" onclick="changeSlide(1)">›</div>
+                    
+                    <!-- Dots Navigation -->
+                    <div class="gallery-dots">
+                        <span class="gallery-dot active" onclick="currentSlide(0)"></span>
+                        <span class="gallery-dot" onclick="currentSlide(1)"></span>
+                        <span class="gallery-dot" onclick="currentSlide(2)"></span>
+                        <span class="gallery-dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+            </div>
             
             <div class="wave-divider">〰️〰️〰️</div>
         </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        let autoSlideInterval;
+        
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.gallery-slide');
+            const dots = document.querySelectorAll('.gallery-dot');
+            const captionElement = document.getElementById('gallery-caption');
+            
+            if (index >= slides.length) {
+                currentSlideIndex = 0;
+            } else if (index < 0) {
+                currentSlideIndex = slides.length - 1;
+            } else {
+                currentSlideIndex = index;
+            }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+            
+            if (captions[currentSlideIndex]) {
+                captionElement.textContent = captions[currentSlideIndex];
+                captionElement.style.display = 'block';
+            } else {
+                captionElement.style.display = 'none';
+            }
+        }
+        
+        function changeSlide(direction) {
+            showSlide(currentSlideIndex + direction);
+            resetAutoSlide();
+        }
+        
+        function currentSlide(index) {
+            showSlide(index);
+            resetAutoSlide();
+        }
+        
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                showSlide(currentSlideIndex + 1);
+            }, 5000);
+        }
+        
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+        
+        showSlide(0);
+        startAutoSlide();
+        
+        const gallery = document.querySelector('.photo-gallery');
+        gallery.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+        
+        gallery.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+    </script>
+
+    <footer>
+        <p>Want to connect? Reach out at iriscai (dot) stanford (dot) edu!</p>
+    </footer>
+
+</body>
+</html>
