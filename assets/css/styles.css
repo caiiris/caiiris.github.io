@@ -343,3 +343,41 @@ footer p {
         right: 10px;
     }
 }
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.social-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFE8D6, #FFF8E7);
+    border: 2px solid #E07A5F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(224, 122, 95, 0.2);
+}
+
+.social-button:hover {
+    transform: translateY(-5px) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(224, 122, 95, 0.3);
+    background: linear-gradient(135deg, #FFD4C6, #FFE8D6);
+}
+
+.social-button svg {
+    width: 24px;
+    height: 24px;
+    fill: #D9704D;
+    transition: fill 0.3s ease;
+}
+
+.social-button:hover svg {
+    fill: #E07A5F;
+}
