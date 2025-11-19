@@ -214,7 +214,7 @@ footer p {
     margin: 0;
 }
 
-/* ===== PHOTO GALLERY STYLES ===== */
+/* photo gallery */
 
 .photo-gallery {
     position: relative;
@@ -296,7 +296,6 @@ footer p {
     right: 20px;
 }
 
-/* dots */
 .gallery-dots {
     position: absolute;
     bottom: 20px;
@@ -344,6 +343,8 @@ footer p {
     }
 }
 
+/* social media links */ 
+
 .social-links {
     display: flex;
     justify-content: center;
@@ -353,7 +354,7 @@ footer p {
 
 .social-links-experience {
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -370,6 +371,10 @@ footer p {
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(224, 122, 95, 0.2);
+}
+
+.social-button svg {
+    display: block; 
 }
 
 .social-button:hover {
