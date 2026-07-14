@@ -228,7 +228,7 @@ p { max-width: 68ch; }
   box-shadow: 7px 12px 26px rgba(40,25,10,.30);
 }
 .photo img { display: block; width: 100%; height: auto; filter: sepia(.42) contrast(1.02) saturate(.82) brightness(.98); }
-.photo .cap { font-family: var(--hand); font-size: 1.5rem; color: #3a2a1c; text-align: center; margin-top: 6px; line-height: 1.1; }
+.photo .cap { position: absolute; left: 0; right: 0; bottom: 14px; font-family: var(--hand); font-size: 1.5rem; color: #3a2a1c; text-align: center; margin: 0; line-height: 1.1; }
 
 .plate .photo.main { top: 0; left: 5%; width: 78%; transform: rotate(-3deg); z-index: var(--z-collage); }
 
