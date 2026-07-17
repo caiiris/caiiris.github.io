@@ -3,15 +3,15 @@
    Intentionally-retro scrapbook zine
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;600;700&display=swap');
 
 :root {
-  --slab: 'Alfa Slab One', Georgia, serif;
+  --slab: 'Zilla Slab', Georgia, serif;
   --type: 'Courier Prime', 'Courier New', monospace;
   --hand: 'Caveat', cursive;
 
   /* faded 70s print palette */
-  --paper: #E9DCBB;
+  --paper: #F0E7CA;
   --ink:   #2C2417;
   --rust:  #A9552F;
   --gold:  #B98A2E;
@@ -141,7 +141,7 @@ body::after {
 .home-stamp .stampmark {
   width: 54px; height: 54px; flex: none; border-radius: 50%;
   border: 2.5px double var(--brick); color: var(--brick);
-  font-family: var(--slab); font-size: 1.1rem; letter-spacing: .02em;
+  font-family: var(--slab); font-weight: 700; font-size: 1.05rem; letter-spacing: .02em;
   display: flex; align-items: center; justify-content: center;
   transform: rotate(-8deg); background: color-mix(in srgb, var(--paper) 55%, transparent);
   box-shadow: 2px 2px 0 color-mix(in srgb, var(--brick) 30%, transparent);
@@ -156,24 +156,16 @@ body::after {
    TYPE
    ========================================================= */
 .display {
-  font-family: var(--slab); line-height: .86; text-wrap: balance;
+  font-family: var(--slab); font-weight: 700; line-height: .9; text-wrap: balance;
 }
 .display .l1, .display .l2 { display: block; position: relative; }
 .display .l1 { color: var(--ink); }
 .display .l2 { color: var(--rust); }
-.display .l2::after {
-  content: attr(data-echo); position: absolute; inset: 0; color: var(--teal);
-  z-index: -1; transform: translate(4px, 3px); opacity: .32;
-}
 
 .page-title {
-  font-family: var(--slab); color: var(--ink); line-height: .9;
-  font-size: clamp(2.6rem, 7vw, 5rem); position: relative; display: inline-block;
-  text-wrap: balance;
-}
-.page-title::after {
-  content: attr(data-echo); position: absolute; inset: 0; color: var(--rust);
-  z-index: -1; transform: translate(3px, 3px); opacity: .28;
+  font-family: var(--slab); font-weight: 700; color: var(--ink); line-height: .95;
+  font-size: clamp(1.9rem, 3.6vw, 3rem); letter-spacing: .005em;
+  position: relative; display: inline-block; text-wrap: balance;
 }
 
 .subttl { font-weight: 700; letter-spacing: .3em; text-transform: uppercase; font-size: .82rem; color: var(--ink); }
@@ -192,8 +184,8 @@ p { max-width: 68ch; }
    BUTTONS
    ========================================================= */
 .btn {
-  display: inline-block; font-family: var(--slab); font-size: 1rem; letter-spacing: .02em;
-  padding: .85rem 1.5rem; color: var(--card); background: var(--ink);
+  display: inline-block; font-family: var(--slab); font-weight: 600; font-size: 1.05rem; letter-spacing: .02em;
+  padding: .8rem 1.5rem; color: var(--card); background: var(--ink);
   text-decoration: none; box-shadow: 5px 5px 0 var(--rust);
   transition: transform .12s var(--ease-out), box-shadow .12s var(--ease-out);
 }
@@ -276,7 +268,7 @@ p { max-width: 68ch; }
    ========================================================= */
 .section { padding: clamp(1rem, 3vw, 2rem) 0; }
 .section-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
-.section-head h2 { font-family: var(--slab); font-size: clamp(1.8rem, 4vw, 3rem); color: var(--ink); line-height: 1; }
+.section-head h2 { font-family: var(--slab); font-weight: 700; font-size: clamp(1.7rem, 3.4vw, 2.6rem); color: var(--ink); line-height: 1; }
 .section-head .meta { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: var(--rust); }
 
 /* =========================================================
@@ -298,7 +290,7 @@ p { max-width: 68ch; }
 .gallery-nav {
   position: absolute; top: 46%; transform: translateY(-50%); z-index: 3;
   width: 44px; height: 44px; background: var(--ink); color: var(--card); border: none;
-  font-family: var(--slab); font-size: 1.4rem; cursor: pointer; line-height: 1;
+  font-family: var(--slab); font-weight: 700; font-size: 1.4rem; cursor: pointer; line-height: 1;
   display: flex; align-items: center; justify-content: center; transition: background .2s;
 }
 .gallery-nav:hover { background: var(--rust); }
@@ -314,7 +306,7 @@ p { max-width: 68ch; }
 .toc { max-width: 780px; margin: 0 auto; }
 .toc-category { margin-bottom: 2.75rem; }
 .toc-category > h3 {
-  font-family: var(--slab); font-size: 1.5rem; color: var(--rust); margin-bottom: .25rem;
+  font-family: var(--slab); font-weight: 700; font-size: 1.5rem; color: var(--rust); margin-bottom: .25rem;
   display: inline-block; position: relative;
 }
 .toc-category > h3 .no { font-family: var(--type); font-size: .8rem; color: var(--olive); letter-spacing: .1em; margin-left: .5rem; }
@@ -341,7 +333,7 @@ p { max-width: 68ch; }
   background: repeating-linear-gradient(90deg, rgba(255,250,235,.75) 0 5px, rgba(230,220,195,.5) 5px 10px);
   box-shadow: 0 2px 5px rgba(0,0,0,.12); transform: rotate(-4deg);
 }
-.clip h3 { font-family: var(--slab); font-size: clamp(1.3rem, 3vw, 1.9rem); margin-bottom: .3rem; line-height: 1.05; }
+.clip h3 { font-family: var(--slab); font-weight: 700; font-size: clamp(1.3rem, 3vw, 1.9rem); margin-bottom: .3rem; line-height: 1.05; }
 .clip h3 a { color: var(--rust); text-decoration: none; }
 .clip h3 a:hover { text-decoration: underline; }
 .clip .when { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--olive); margin-bottom: 1rem; }
@@ -353,7 +345,7 @@ p { max-width: 68ch; }
    ========================================================= */
 .teaser { text-align: center; padding: clamp(2rem, 6vw, 5rem) 0; }
 .teaser .big-stamp {
-  display: inline-block; font-family: var(--slab); font-size: clamp(1.4rem, 4vw, 2.4rem);
+  display: inline-block; font-family: var(--slab); font-weight: 600; font-size: clamp(1.4rem, 4vw, 2.4rem);
   color: var(--brick); border: 4px double var(--brick); padding: 1rem 1.8rem;
   transform: rotate(-4deg); letter-spacing: .06em; text-transform: uppercase; opacity: .85;
 }
