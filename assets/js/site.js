@@ -6,22 +6,24 @@
   var reduceMotion = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Photo gallery ---------- */
-  var gallery = document.querySelector('.gallery');
-  if (gallery) {
+  /* ---------- Photo galleries (supports multiple) ---------- */
+  function initGallery(gallery, autoMs) {
     var slides = Array.prototype.slice.call(gallery.querySelectorAll('.gallery-slide'));
+    if (!slides.length) return;
     var dotsWrap = gallery.querySelector('.gallery-dots');
     var current = 0;
     var timer = null;
 
-    slides.forEach(function (_, i) {
-      var dot = document.createElement('button');
-      dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', 'Photo ' + (i + 1));
-      dot.addEventListener('click', function () { go(i); reset(); });
-      dotsWrap.appendChild(dot);
-    });
-    var dots = Array.prototype.slice.call(dotsWrap.children);
+    if (dotsWrap) {
+      slides.forEach(function (_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Photo ' + (i + 1));
+        dot.addEventListener('click', function () { go(i); reset(); });
+        dotsWrap.appendChild(dot);
+      });
+    }
+    var dots = dotsWrap ? Array.prototype.slice.call(dotsWrap.children) : [];
 
     function go(n) {
       current = (n + slides.length) % slides.length;
@@ -29,7 +31,7 @@
       dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
     }
     function step(dir) { go(current + dir); reset(); }
-    function start() { if (!reduceMotion) timer = setInterval(function () { go(current + 1); }, 5000); }
+    function start() { if (!reduceMotion && slides.length > 1) timer = setInterval(function () { go(current + 1); }, autoMs); }
     function reset() { clearInterval(timer); start(); }
 
     var prev = gallery.querySelector('.gallery-nav.prev');
@@ -41,6 +43,12 @@
     gallery.addEventListener('mouseleave', start);
     start();
   }
+
+  var galleries = Array.prototype.slice.call(document.querySelectorAll('.gallery'));
+  galleries.forEach(function (g, i) {
+    /* slightly offset timers so side-by-side galleries don't flip in lockstep */
+    initGallery(g, 5000 + i * 1300);
+  });
 
   /* ---------- Scroll reveals (progressive enhancement) ----------
      Elements are fully visible by default. If JS + motion are on,
