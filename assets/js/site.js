@@ -50,6 +50,9 @@
     initGallery(g, 5000 + i * 1300);
   });
 
+  /* Bookshelf oracle + ledger live in an inline script on that page. */
+  window.__siteReduceMotion = reduceMotion;
+
   /* ---------- Scroll reveals (progressive enhancement) ----------
      Elements are fully visible by default. If JS + motion are on,
      we hide-then-reveal once as they enter the viewport. */

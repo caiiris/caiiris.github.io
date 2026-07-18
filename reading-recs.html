@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iris Cai · Bookshelf</title>
-    <link rel="stylesheet" href="assets/css/styles.css?v=38">
+    <link rel="stylesheet" href="assets/css/styles.css?v=52">
 </head>
 <body>
 
@@ -34,39 +34,201 @@
             <h1 class="page-title" data-echo="BOOKSHELF">BOOKSHELF</h1>
         </div>
 
-        <div class="toc">
-            <section class="toc-category" data-reveal>
-                <h3>Poems</h3>
-                <div class="toc-item"><a href="https://www.poetryfoundation.org/poetrymagazine/poems/56104/devotions" target="_blank" rel="noopener">"21"</a><span class="leaders"></span><span class="by">Richard Siken</span></div>
-                <div class="toc-item"><a href="https://www.poetryfoundation.org/poetrymagazine/poems/56104/devotions" target="_blank" rel="noopener">"Devotions"</a><span class="leaders"></span><span class="by">Bruce Snider</span></div>
-                <div class="toc-item"><a href="https://www.poetryfoundation.org/poetrymagazine/poems/58154/poplar-street" target="_blank" rel="noopener">"Poplar Street"</a><span class="leaders"></span><span class="by">Chen Chen</span></div>
-                <div class="toc-item"><a href="https://harpers.org/archive/2021/07/reasons-for-staying-ocean-vuong/" target="_blank" rel="noopener">"Reasons for Staying"</a><span class="leaders"></span><span class="by">Ocean Vuong</span></div>
-                <div class="toc-item"><a href="https://www.poetryfoundation.org/poems/1580548/social-skills-training" target="_blank" rel="noopener">"Social Skills Training"</a><span class="leaders"></span><span class="by">Solmaz Sharif</span></div>
-                <div class="toc-item"><a href="https://www.poetryfoundation.org/poems/47947/the-oldest-living-thing-in-la" target="_blank" rel="noopener">"The Oldest Living Thing in L.A."</a><span class="leaders"></span><span class="by">Larry Levis</span></div>
-                <div class="toc-item"><a href="https://poets.org/poem/what-living-do" target="_blank" rel="noopener">"What the Living Do"</a><span class="leaders"></span><span class="by">Marie Howe</span></div>
-                <div class="toc-item"><a href="https://www.poetryfoundation.org/poems/53388/winter-stars-56d232a1c9b93" target="_blank" rel="noopener">"Winter Stars"</a><span class="leaders"></span><span class="by">Larry Levis</span></div>
-            </section>
-
-            <section class="toc-category" data-reveal>
-                <h3>Essays</h3>
-                <div class="toc-item"><a href="https://www.penguin.co.in/toward-an-impure-poetry-by-pablo-neruda/" target="_blank" rel="noopener">"Toward an Impure Poetry"</a><span class="leaders"></span><span class="by">Pablo Neruda</span></div>
-                <div class="toc-item"><a href="https://www.theatlantic.com/entertainment/archive/2013/11/what-is-a-poem/281835/" target="_blank" rel="noopener">"What is a Poem?"</a><span class="leaders"></span><span class="by">Mark Yakich</span></div>
-            </section>
-
-            <section class="toc-category" data-reveal>
-                <h3>Collections</h3>
-                <div class="toc-item"><a href="https://www.amazon.com/Bluets-Maggie-Nelson/dp/1933517409" target="_blank" rel="noopener">"Bluets"</a><span class="leaders"></span><span class="by">Maggie Nelson</span></div>
-                <div class="toc-item"><a href="https://www.graywolfpress.org/books/deaf-republic" target="_blank" rel="noopener">"Deaf Republic"</a><span class="leaders"></span><span class="by">Ilya Kaminsky</span></div>
-                <div class="toc-item"><a href="https://citylights.com/general-poetry/lunch-poems-pp-19/" target="_blank" rel="noopener">"Lunch Poems"</a><span class="leaders"></span><span class="by">Frank O'Hara</span></div>
-                <div class="toc-item"><a href="https://www.amazon.com/City-Which-American-Poets-Continuum/dp/0918526833" target="_blank" rel="noopener">"The City in Which I Love You"</a><span class="leaders"></span><span class="by">Li-Young Lee</span></div>
-            </section>
-
-            <div class="list-end" data-reveal>
-                <img src="assets/pressed-flower-2.png" alt="A pressed wildflower sprig">
-                <p class="note">more soon</p>
+        <div class="rec-machine" data-reveal>
+            <div class="rec-stage">
+                <span class="rec-tape rt1" aria-hidden="true"></span>
+                <span class="rec-tape rt2" aria-hidden="true"></span>
+                <div class="rec-card" id="recCard" role="button" tabindex="0" aria-live="polite">
+                    <span class="rec-empty">click me for a recommendation</span>
+                </div>
+            </div>
+            <div class="rec-controls">
+                <button class="btn ghost" id="showAll" type="button">browse the full list</button>
             </div>
         </div>
+
+        <div class="bk-list is-collapsed" id="fullList">
+            <div class="bk-tools">
+                <div class="bk-tabs" id="bkTabs">
+                    <button class="bk-tab active" data-f="all" type="button">all</button>
+                    <button class="bk-tab" data-f="fav" type="button">★ favorites</button>
+                    <button class="bk-tab" data-f="poems" type="button">poems</button>
+                    <button class="bk-tab" data-f="essays" type="button">essays</button>
+                    <button class="bk-tab" data-f="collections" type="button">collections</button>
+                </div>
+                <span class="bk-count" id="bkCount"></span>
+                <div class="bk-search"><input id="bkSearch" type="search" placeholder="search title or author…" aria-label="Search recommendations"></div>
+            </div>
+            <div class="led-list" id="bkRows"></div>
+            <div class="bk-pager" id="bkPager" role="navigation" aria-label="List pages"></div>
+        </div>
     </main>
+
+    <script>
+    (function () {
+        var RECS = [
+            { t: '"21"', a: 'Richard Siken', c: 'poems', h: 'https://www.poetryfoundation.org/poetrymagazine/poems/56104/devotions', fav: true },
+            { t: '"Devotions"', a: 'Bruce Snider', c: 'poems', h: 'https://www.poetryfoundation.org/poetrymagazine/poems/56104/devotions' },
+            { t: '"Poplar Street"', a: 'Chen Chen', c: 'poems', h: 'https://www.poetryfoundation.org/poetrymagazine/poems/58154/poplar-street' },
+            { t: '"Reasons for Staying"', a: 'Ocean Vuong', c: 'poems', h: 'https://harpers.org/archive/2021/07/reasons-for-staying-ocean-vuong/', fav: true },
+            { t: '"Social Skills Training"', a: 'Solmaz Sharif', c: 'poems', h: 'https://www.poetryfoundation.org/poems/1580548/social-skills-training' },
+            { t: '"The Oldest Living Thing in L.A."', a: 'Larry Levis', c: 'poems', h: 'https://www.poetryfoundation.org/poems/47947/the-oldest-living-thing-in-la' },
+            { t: '"What the Living Do"', a: 'Marie Howe', c: 'poems', h: 'https://poets.org/poem/what-living-do', fav: true },
+            { t: '"Winter Stars"', a: 'Larry Levis', c: 'poems', h: 'https://www.poetryfoundation.org/poems/53388/winter-stars-56d232a1c9b93', fav: true },
+            { t: '"Toward an Impure Poetry"', a: 'Pablo Neruda', c: 'essays', h: 'https://www.penguin.co.in/toward-an-impure-poetry-by-pablo-neruda/' },
+            { t: '"What is a Poem?"', a: 'Mark Yakich', c: 'essays', h: 'https://www.theatlantic.com/entertainment/archive/2013/11/what-is-a-poem/281835/' },
+            { t: '"Bluets"', a: 'Maggie Nelson', c: 'collections', h: 'https://www.amazon.com/Bluets-Maggie-Nelson/dp/1933517409', fav: true },
+            { t: '"Deaf Republic"', a: 'Ilya Kaminsky', c: 'collections', h: 'https://www.graywolfpress.org/books/deaf-republic', fav: true },
+            { t: '"Lunch Poems"', a: "Frank O'Hara", c: 'collections', h: 'https://citylights.com/general-poetry/lunch-poems-pp-19/' },
+            { t: '"The City in Which I Love You"', a: 'Li-Young Lee', c: 'collections', h: 'https://www.amazon.com/City-Which-American-Poets-Continuum/dp/0918526833' }
+        ];
+        var STAR = '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01z"/></svg>';
+        var reduceMotion = !!window.__siteReduceMotion;
+
+        /* ----- ledger list (thin cards) + pagination ----- */
+        var rows = document.getElementById('bkRows');
+        var count = document.getElementById('bkCount');
+        var tabs = document.getElementById('bkTabs');
+        var search = document.getElementById('bkSearch');
+        var pager = document.getElementById('bkPager');
+        var PAGE_SIZE = 8;
+        var filter = 'all', q = '', page = 1;
+
+        function filtered() {
+            return RECS.filter(function (r) {
+                var okF = filter === 'all' || (filter === 'fav' ? r.fav : r.c === filter);
+                var okQ = !q || (r.t + ' ' + r.a).toLowerCase().indexOf(q) > -1;
+                return okF && okQ;
+            });
+        }
+        function cardHTML(r) {
+            return '<span class="led-fav ' + (r.fav ? 'on' : 'off') + '" aria-hidden="true">' + STAR + '</span>' +
+                '<span class="led-title"><a href="' + r.h + '" target="_blank" rel="noopener">' + r.t + '</a></span>' +
+                '<span class="led-leader"></span>' +
+                '<span class="led-author">' + r.a + '</span>' +
+                '<span class="led-cat"><span>' + r.c + '</span></span>';
+        }
+        function renderPager(cur, pages) {
+            pager.innerHTML = '';
+            if (pages <= 1) return;
+            function btn(label, target, opts) {
+                opts = opts || {};
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'bk-page' + (opts.active ? ' active' : '');
+                b.innerHTML = label;
+                if (opts.disabled) { b.disabled = true; }
+                else { b.addEventListener('click', function () { goToPage(target); }); }
+                if (opts.active) b.setAttribute('aria-current', 'page');
+                pager.appendChild(b);
+            }
+            btn('‹ prev', cur - 1, { disabled: cur === 1 });
+            for (var i = 1; i <= pages; i++) btn(String(i), i, { active: i === cur });
+            btn('next ›', cur + 1, { disabled: cur === pages });
+        }
+        function draw() {
+            var list = filtered();
+            var total = list.length;
+            var pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+            if (page > pages) page = pages;
+            if (page < 1) page = 1;
+            var start = (page - 1) * PAGE_SIZE;
+            var slice = list.slice(start, start + PAGE_SIZE);
+
+            rows.innerHTML = '';
+            if (!total) {
+                rows.innerHTML = '<p class="bk-empty">nothing on this shelf yet.</p>';
+                count.textContent = '';
+                renderPager(1, 1);
+                return;
+            }
+            slice.forEach(function (r) {
+                var el = document.createElement('div');
+                el.className = 'led-card';
+                el.innerHTML = cardHTML(r);
+                rows.appendChild(el);
+            });
+            count.textContent = 'showing ' + (start + 1) + '–' + (start + slice.length) + ' of ' + total + (total === 1 ? ' entry' : ' entries');
+            renderPager(page, pages);
+        }
+        function goToPage(p) {
+            page = p;
+            draw();
+            fullList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        tabs.addEventListener('click', function (e) {
+            var b = e.target.closest('.bk-tab');
+            if (!b) return;
+            Array.prototype.forEach.call(this.children, function (c) { c.classList.remove('active'); });
+            b.classList.add('active');
+            filter = b.getAttribute('data-f');
+            page = 1;
+            draw();
+        });
+        search.addEventListener('input', function () { q = this.value.toLowerCase().trim(); page = 1; draw(); });
+        draw();
+
+        /* ----- oracle ----- */
+        var card = document.getElementById('recCard');
+        var showAll = document.getElementById('showAll');
+        var fullList = document.getElementById('fullList');
+        var lastIdx = -1, spinning = false;
+
+        function pick() {
+            var i;
+            do { i = Math.floor(Math.random() * RECS.length); } while (RECS.length > 1 && i === lastIdx);
+            lastIdx = i;
+            return RECS[i];
+        }
+        function renderRec(r) {
+            card.innerHTML =
+                '<span class="rec-cat">' + r.c + '</span>' +
+                '<a class="rec-title" href="' + r.h + '" target="_blank" rel="noopener">' + r.t + '</a>' +
+                '<span class="rec-by">' + r.a + '</span>';
+        }
+        function drawRec() {
+            if (spinning) return;
+            spinning = true;
+            card.classList.remove('landed');
+            if (reduceMotion) {
+                renderRec(pick());
+                card.classList.add('landed');
+                spinning = false;
+                return;
+            }
+            card.classList.add('spinning');
+            var total = 16, n = 0;
+            (function step() {
+                renderRec(pick());
+                n++;
+                if (n >= total) {
+                    card.classList.remove('spinning');
+                    card.classList.add('landed');
+                    spinning = false;
+                    return;
+                }
+                setTimeout(step, 22 + n * n * 0.7);
+            })();
+        }
+        card.addEventListener('click', function (e) {
+            /* don't re-roll when tapping the recommendation's link */
+            if (e.target.closest('a')) return;
+            drawRec();
+        });
+        card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); drawRec(); }
+        });
+        showAll.addEventListener('click', function () {
+            var collapsed = fullList.classList.toggle('is-collapsed');
+            if (!collapsed) {
+                showAll.textContent = 'hide the full list';
+                fullList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                showAll.textContent = 'browse the full list';
+            }
+        });
+    })();
+    </script>
 
     <footer class="site-footer">
         <div class="wrap">
@@ -88,6 +250,6 @@
         </div>
     </footer>
 
-    <script src="assets/js/site.js"></script>
+    <script src="assets/js/site.js?v=52"></script>
 </body>
 </html>
