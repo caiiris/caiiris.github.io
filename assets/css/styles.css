@@ -523,7 +523,7 @@ a.rec-title:hover { color: var(--rust); text-decoration: underline; }
 .camp-list li:last-child { margin-bottom: 0; }
 .camp-list .camp-name { display: block; font-size: .88rem; font-weight: 700; }
 .camp-list .camp-name .a-year { font-weight: 400; color: var(--olive); }
-.camp-list p { font-size: .85rem; line-height: 1.5; margin: .15rem 0 0; color: var(--ink); opacity: .85; }
+.camp-list p { font-size: .88rem; line-height: 1.5; margin: .15rem 0 0; color: var(--ink); opacity: .85; }
 
 /* project group labels */
 .clip-group-title {
